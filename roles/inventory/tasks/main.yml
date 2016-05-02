@@ -1,0 +1,45 @@
+- block:
+    - command: cp jenkins-hosts.template jenkins-hosts creates=jenkins-hosts
+
+    - replace: dest=./jenkins-hosts regexp='@db_ip@' replace={{ ec2["instances"][0]["private_ip"] }}
+      when: type == "db"
+
+    - replace: dest=./jenkins-hosts regexp='@admin_ip@' replace={{ ec2["instances"][0]["private_ip"] }}
+      when: type == "admin"
+
+  when: multinode == 'false'
+
+- block:
+    - command: cp jenkins-hosts-multi.template jenkins-hosts creates=jenkins-hosts
+
+    - replace: dest=./jenkins-hosts regexp='@db_ip@' replace={{ ec2["instances"][0]["private_ip"] }}
+      when: type == "db"
+
+    - replace: dest=./jenkins-hosts regexp='@admin_ip@' replace={{ ec2["instances"][0]["private_ip"] }}
+      when: type == "admin"
+
+    - replace: dest=./jenkins-hosts regexp='@soa_ip@' replace={{ ec2["instances"][0]["private_ip"] }}
+      when: type == "soa"
+
+    - replace: dest=./jenkins-hosts regexp='@bpm_ip@' replace={{ ec2["instances"][0]["private_ip"] }}
+      when: type == "bpm"
+
+    - replace: dest=./jenkins-hosts regexp='@b2b_ip@' replace={{ ec2["instances"][0]["private_ip"] }}
+      when: type == "b2b"
+
+    - replace: dest=./jenkins-hosts regexp='@ess_ip@' replace={{ ec2["instances"][0]["private_ip"] }}
+      when: type == "ess"
+
+    - replace: dest=./jenkins-hosts regexp='@bam_ip@' replace={{ ec2["instances"][0]["private_ip"] }}
+      when: type == "bam"
+
+    - replace: dest=./jenkins-hosts regexp='@osb_ip@' replace={{ ec2["instances"][0]["private_ip"] }}
+      when: type == "osb"
+
+    - replace: dest=./jenkins-hosts regexp='@mft_ip@' replace={{ ec2["instances"][0]["private_ip"] }}
+      when: type == "mft"
+
+  when: multinode == 'true'
+
+
+- replace: dest=./jenkins-hosts regexp='@env@' replace={{ env }}

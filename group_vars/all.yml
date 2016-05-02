@@ -1,0 +1,13 @@
+# Ec2 attributes
+ansible_user: ec2-user
+aws_region: us-east-1
+key_name: fmw_oracle
+security_group_id: default
+instance_type: m3.large
+ami_id: 'ami-2051294a' 
+volume_device_name: '/dev/sda1'
+volume_type: 'gp2'
+volume_size: 100
+vpc_subnet_id: 'subnet-3e660d48'
+assign_public_ip: 'yes'
+

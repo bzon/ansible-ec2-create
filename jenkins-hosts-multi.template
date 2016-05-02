@@ -1,0 +1,37 @@
+## Inventory template
+## Jenkins will replace all @vars@ accordingly
+#
+
+[@env@]
+@db_ip@
+@admin_ip@
+@soa_ip@
+@b2b_ip@
+@bpm_ip@
+@ess_ip@
+@osb_ip@
+@bam_ip@
+@mft_ip@
+
+[dbserver]
+@db_ip@
+[adminserver]
+@admin_ip@
+[soaserver]
+@soa_ip@
+[essserver]
+@ess_ip@
+[bpmserver]
+@bpm_ip@
+[b2bserver]
+@b2b_ip@
+[osbserver]
+@osb_ip@
+[bamserver]
+@bam_ip@
+[mftserver]
+@mft_ip@
+
+[all:vars]
+db_ip=@db_ip@
+admin_ip=@admin_ip@
