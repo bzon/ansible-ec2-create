@@ -34,15 +34,15 @@
       when: type == "bam"
 
     - replace: dest=./jenkins-hosts regexp='@osb_ip@' replace={{ ec2["instances"][0]["private_ip"] }}
-      when: type == "osb"
+      when: type == "osb"  
 
     - replace: dest=./jenkins-hosts regexp='@soa_host@' replace={{ ec2["instances"][0]["private_ip"] }}
       when: type == "mft"
 	  
-	- replace: dest=./jenkins-hosts regexp='@soa_host_1_ip@' replace={{ ec2["instances"][0]["private_ip"] }}
+    - replace: dest=./jenkins-hosts regexp='@soa_host_1_ip@' replace={{ ec2["instances"][0]["private_ip"] }}
       when: type == "soahost1server"
 	  
-	- replace: dest=./jenkins-hosts regexp='@soa_host_2_ip@' replace={{ ec2["instances"][0]["private_ip"] }}
+    - replace: dest=./jenkins-hosts regexp='@soa_host_2_ip@' replace={{ ec2["instances"][0]["private_ip"] }}
       when: type == "soahost2server"
 
   when: multinode == 'true'
