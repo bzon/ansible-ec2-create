@@ -12,6 +12,8 @@
 @osb_ip@
 @bam_ip@
 @mft_ip@
+@soa_host_1_ip@
+@soa_host_2_ip@
 
 [dbserver]
 @db_ip@
@@ -31,6 +33,10 @@
 @bam_ip@
 [mftserver]
 @mft_ip@
+[soahost1server]
+@soa_host_1_ip@
+[soahost2server]
+@soa_host_2_ip@
 
 [all:vars]
 db_ip=@db_ip@
