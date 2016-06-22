@@ -1,0 +1,51 @@
+- name: Create Docker Hosts Security Group
+  ec2_group:
+    name: fmw_docker_host_security_group
+    description: "Generated using Ansible"
+    vpc_id: "{{ vpc_id }}"
+    region: "{{ aws_region }}"
+    rules:
+     - proto: tcp
+       from_port: 80
+       to_port: 80
+       cidr_ip: 0.0.0.0/0
+     - proto: tcp
+       from_port: 22
+       to_port: 22
+       cidr_ip: 0.0.0.0/0
+     - proto: tcp
+       from_port: 443
+       to_port: 443
+       cidr_ip: 0.0.0.0/0
+     - proto: tcp
+       from_port: 2375
+       to_port: 2375
+       cidr_ip: "{{ vpc_cidr_block }}"
+     - proto: tcp
+       from_port: 1521
+       to_port: 1521
+       cidr_ip: 0.0.0.0/0
+     - proto: tcp
+       from_port: 7001
+       to_port: 7001
+       cidr_ip: 0.0.0.0/0
+     - proto: tcp
+       from_port: 8001
+       to_port: 8001
+       cidr_ip: 0.0.0.0/0
+     - proto: tcp
+       from_port: 8011
+       to_port: 8011
+       cidr_ip: 0.0.0.0/0
+     - proto: tcp
+       from_port: 8021
+       to_port: 8021
+       cidr_ip: 0.0.0.0/0
+     - proto: tcp
+       from_port: 8031
+       to_port: 8031
+       cidr_ip: 0.0.0.0/0
+    state: present
+  register: aws_sec_group
+
+- debug: var=aws_sec_group

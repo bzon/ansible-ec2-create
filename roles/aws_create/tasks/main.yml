@@ -32,4 +32,4 @@
   wait_for: host={{ ec2["instances"][0]["private_ip"] }} port=22 delay=60 timeout=320 state=started
 
 - name: Add IP to ec2_hosts group
-  add_host: hostname={{ ec2["instances"][0]["private_ip"] }} groups=ec2_hosts
+  add_host: name={{ ec2["instances"][0]["private_ip"] }} groups=ec2_hosts
