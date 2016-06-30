@@ -1,0 +1,18 @@
+- name: Attach Volume from Snapshot
+  ec2_vol:
+    instance: "{{ lookup('file', 'instance_ids.txt') }}"
+    volume_type: "{{ volume_type }}"
+    device_name: "{{ volume_device_name }}"
+    snapshot: "{{ snapshot_id }}"
+    delete_on_termination: "yes"
+  tags: attach_snapshot
+
+- name: Attach Volume
+  ec2_vol:
+    instance: "{{ lookup('file', 'instance_ids.txt') }}"
+    volume_type: "{{ volume_type }}"
+    device_name: "{{ volume_device_name }}"
+    delete_on_termination: "yes"
+  tags: attach_volume
+
+
