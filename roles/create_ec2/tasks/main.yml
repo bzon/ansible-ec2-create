@@ -17,6 +17,7 @@
     count: 1
     instance_tags:
      Name: "{{ instance_name|lower }}"
+     environment: "{{ environment }}"
     region: "{{ aws_region }}"
   register: ec2
 
