@@ -1,8 +1,0 @@
-- hosts: localhost
-  connection: local
-  become: true
-  become_user: root
-  gather_facts: False
-  roles:
-   - aws_sec_group
-   - { role: aws_create, security_group_id: "{{ aws_sec_group.group_id }}" }

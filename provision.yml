@@ -1,0 +1,10 @@
+---
+- hosts: '127.0.0.1'
+  connection: local
+  become: true
+  become_user: root
+  gather_facts: False
+  roles:
+   - create_security_group
+   - { role: create_ec2, security_group_id: "{{ aws_sec_group.group_id }}" }
+   - tokenise_inventory

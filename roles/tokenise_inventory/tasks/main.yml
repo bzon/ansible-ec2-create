@@ -1,3 +1,7 @@
+# This role is mainly for jenkins to dynamically create inventory files
+# Currently in use for Ansible provisioning using install from scratch method (Single node and Multi Node)
+# This is working but can be improved greatly.. if anyone has a better idea.. - Bryan
+
 - block:
     - command: cp jenkins-hosts.template jenkins-hosts creates=jenkins-hosts
 
