@@ -2,6 +2,8 @@
 
 This playbook uses ec2 modules to create AWS EC2 instances and security groups. 
 
+
+
 ## General Usage
 
   - Authenticate ansible-playbook to your AWS account
@@ -24,6 +26,8 @@ The playbook will generate a file called instance_ids.txt which contains the ins
     ```bash
     ansible-playbook terminate_instances.yml
     ```
+	
+
 	
 ## Environment File
 
