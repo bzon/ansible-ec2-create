@@ -2,8 +2,6 @@
 
 This playbook uses ec2 modules to create AWS EC2 instances and security groups. 
 
-
-
 ## General Usage
 
   - Authenticate ansible-playbook to your AWS account
@@ -18,7 +16,7 @@ This playbook uses ec2 modules to create AWS EC2 instances and security groups.
     ```bash
     ansible-playbook provision.yml --extra-vars "instance_name='${ENVIRONMENT}_fmw_docker_host' aws_region=${AWS_REGION} key_name=${AWS_KEY_PAIR} vpc_subnet_id=${AWS_SUBNET_ID} ami_id=${AWS_AMI_ID} instance_type=${INSTANCE_TYPE} volume_size=200 vpc_id=${AWS_VPC_ID} type=docker env=${ENVIRONMENT}" 
     ```
-	
+
 The playbook will generate a file called instance_ids.txt which contains the instance id of the provisioned EC2. This is intended for the below playbook to be accepted as a parameter and delete the said instance.
 
   - To delete the instance you just provisioned. Run the following:
@@ -26,7 +24,6 @@ The playbook will generate a file called instance_ids.txt which contains the ins
     ```bash
     ansible-playbook terminate_instances.yml
     ```
-	
 
 	
 ## Environment File
