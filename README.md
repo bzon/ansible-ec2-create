@@ -28,7 +28,7 @@ The playbook will generate a file called instance_ids.txt which contains the ins
 	
 ## Environment File
 
-The environment specific variables are passed as parameter to the Ansible scripts using a property file called all.yml.
+The environment specific variables are passed as parameter to the Ansible scripts using a property file called `all.yml`.
 
 ec2-create Variables | Description
 -------------------- | --------------------
