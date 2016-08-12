@@ -12,7 +12,7 @@
     instance: "{{ lookup('file', 'instance_ids.txt') }}"
     volume_type: "{{ docker_volume_type }}"
     device_name: "{{ docker_device_name }}"
-	volume_size: "{{ docker_volume_size }}"
+    volume_size: "{{ docker_volume_size }}"
     delete_on_termination: "yes"
   tags: attach_volume
 
