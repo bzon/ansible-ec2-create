@@ -7,9 +7,15 @@ instance_type: 'm4.large'
 ami_id: 'ami-2051294a' 
 volume_device_name: '/dev/sda1'
 volume_type: 'gp2'
-volume_size: 100
+volume_size: 30
 vpc_subnet_id: 'subnet-3e660d48'
 vpc_cidr_block: '10.10.0.0/16'
 assign_public_ip: 'yes'
 multinode: 'false'
 env: 'sandbox'
+
+#Docker Logical Volume attributes
+lv_volume_type: 'gp2'
+lv_device_name: '/dev/xvdf'
+lv_volume_size: '50'
+lv_volume_group: 'docker-vg'
