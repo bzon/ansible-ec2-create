@@ -1,6 +1,6 @@
 ## Overview
 
-This playbook uses ec2 modules to create AWS EC2 instances and security groups. 
+This playbook uses ec2 modules to create AWS EC2 instances, security group, and attach an extra EBS volume. 
 
 ## General Usage
 
@@ -14,7 +14,7 @@ This playbook uses ec2 modules to create AWS EC2 instances and security groups.
   - To provision EC2 instance, run the command:
   
     ```bash
-    ansible-playbook provision.yml --extra-vars "instance_name='${ENVIRONMENT}_fmw_docker_host' aws_region=${AWS_REGION} key_name=${AWS_KEY_PAIR} vpc_subnet_id=${AWS_SUBNET_ID} ami_id=${AWS_AMI_ID} instance_type=${INSTANCE_TYPE} volume_size=200 vpc_id=${AWS_VPC_ID} type=docker env=${ENVIRONMENT}" 
+    ansible-playbook provision.yml --extra-vars "instance_name=MY_EC2_INSTANCE aws_region=${AWS_REGION} key_name=${AWS_KEY_PAIR} vpc_subnet_id=${SUBNET} ami_id=${CENTOS_AMI_ID} instance_type=${MASTERS_INSTANCE_TYPE} volume_size=${ROOT_VOLUME_SIZE} lv_volume_size=${LV_VOLUME_SIZE} vpc_id=${AWS_VPC_ID} volume_device_name='/dev/sda1' env=sandbox vpc_cidr_block=${AWS_VPC_CIDR}"
     ```
 
 The playbook will generate a file called instance_ids.txt which contains the instance id of the provisioned EC2. This is intended for the below playbook to be accepted as a parameter and delete the said instance.
