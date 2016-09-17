@@ -40,8 +40,8 @@
     block: |
       {{ instance_name }}_PUBLIC_IP={{ ec2["instances"][0]["public_ip"] }}
       {{ instance_name }}_PRIVATE_IP={{ ec2["instances"][0]["private_ip"] }}
-      {{ instance_name }}_PUBLIC_HOSTNAME={{ ec2["instances][0]["private_dns_name"] }}
-      {{ instance_name }}_PRIVATE_HOSTNAME={{ ec2["instances][0]["public_dns_name"] }}
+      {{ instance_name }}_PUBLIC_HOSTNAME={{ ec2["instances"][0]["private_dns_name"] }}
+      {{ instance_name }}_PRIVATE_HOSTNAME={{ ec2["instances"][0]["public_dns_name"] }}
       {{ instance_name }}_ELASTIC_IP=
       
 
