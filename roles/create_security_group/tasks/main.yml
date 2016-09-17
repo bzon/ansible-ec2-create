@@ -1,7 +1,7 @@
 - name: Create EC2 Hosts Security Group
   ec2_group:
     name: oracle_security_group_autogen_ansible
-    description: "Oracle Stack Firewall Rules Auto Generated using Ansible"
+    description: "Firewall Rules Auto Generated using Ansible Security Group module"
     vpc_id: "{{ vpc_id }}"
     region: "{{ aws_region }}"
     rules:
@@ -18,33 +18,17 @@
        to_port: 443
        cidr_ip: 0.0.0.0/0
      - proto: tcp
-       from_port: 2375
-       to_port: 2375
+       from_port: 8443
+       to_port: 8443
+       cidr_ip: 0.0.0.0/0
+     - proto: tcp
+       from_port: 0
+       to_port: 65535
        cidr_ip: "{{ vpc_cidr_block }}"
-     - proto: tcp
-       from_port: 1521
-       to_port: 1521
-       cidr_ip: 0.0.0.0/0
-     - proto: tcp
-       from_port: 7001
-       to_port: 7001
-       cidr_ip: 0.0.0.0/0
-     - proto: tcp
-       from_port: 8001
-       to_port: 8001
-       cidr_ip: 0.0.0.0/0
-     - proto: tcp
-       from_port: 8011
-       to_port: 8011
-       cidr_ip: 0.0.0.0/0
-     - proto: tcp
-       from_port: 8021
-       to_port: 8021
-       cidr_ip: 0.0.0.0/0
-     - proto: tcp
-       from_port: 8031
-       to_port: 8031
-       cidr_ip: 0.0.0.0/0
+     - proto: udp
+       from_port: 0
+       to_port: 65535
+       cidr_ip: "{{ vpc_cidr_block }}"
     state: present
   register: aws_sec_group
 
