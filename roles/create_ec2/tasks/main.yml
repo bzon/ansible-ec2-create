@@ -36,6 +36,7 @@
 - name: Create a properties file about the instance information
   blockinfile:
     dest: ./instances_data.sh
+    marker: ""
     create: yes
     block: |
       {{ instance_name }}_PUBLIC_IP={{ ec2["instances"][0]["public_ip"] }}
