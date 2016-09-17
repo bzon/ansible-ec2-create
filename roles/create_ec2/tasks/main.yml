@@ -16,7 +16,7 @@
     assign_public_ip: "{{ assign_public_ip }}"
     count: 1
     instance_tags:
-     Name: "{{ instance_name|lower }}"
+     Name: "{{ instance_name }}"
      environment: "{{ env }}"
     region: "{{ aws_region }}"
   register: ec2
@@ -26,14 +26,7 @@
 - name: Write the instance id to a file
   shell: echo "{{ ec2.instance_ids }}" | tr -d "[]u'" > ./instance_ids.txt
 
-- name: Write Private ip address to a file
-  copy: content={{ ec2["instances"][0]["private_ip"] }} dest=./{{ instance_name }}.ip
-
-- name: Write Public ip address to a file
-  copy: content={{ ec2["instances"][0]["public_ip"] }} dest=./{{ instance_name }}_public.ip
-  when: ec2.instances[0].public_ip is defined
-
-- name: Create a properties file about the instance information
+- name: Create a properties file about the created instance information
   blockinfile:
     dest: ./instances_data.sh
     marker: ""
@@ -43,9 +36,7 @@
       {{ instance_name }}_PRIVATE_IP={{ ec2["instances"][0]["private_ip"] }}
       {{ instance_name }}_PUBLIC_HOSTNAME={{ ec2["instances"][0]["public_dns_name"] }}
       {{ instance_name }}_PRIVATE_HOSTNAME={{ ec2["instances"][0]["private_dns_name"] }}
-      {{ instance_name }}_ELASTIC_IP=
       
-
 - name: Wait for SSH to come up
   wait_for: host={{ ec2["instances"][0]["private_ip"] }} port=22 delay=60 timeout=320 state=started
 
