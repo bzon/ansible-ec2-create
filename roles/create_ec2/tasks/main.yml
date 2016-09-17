@@ -28,7 +28,7 @@
 
 - name: Create a properties file about the created instance information
   blockinfile:
-    dest: ./instances_data.sh
+    dest: ./instances_data.txt
     marker: ""
     create: yes
     block: |
