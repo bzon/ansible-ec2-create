@@ -1,6 +1,6 @@
 - name: Attach Volume
   ec2_vol:
-    instance: "{{ ec2["instances"][0]["id"] }}"
+    instance: "{{ ec2.instances.[0].id. }}"
     volume_type: "{{ lv_volume_type }}"
     device_name: "{{ lv_device_name }}"
     volume_size: "{{ lv_volume_size }}"
