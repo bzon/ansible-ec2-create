@@ -33,6 +33,18 @@
   copy: content={{ ec2["instances"][0]["public_ip"] }} dest=./{{ instance_name }}_public.ip
   when: ec2.instances[0].public_ip is defined
 
+- name: Create a properties file about the instance information
+  blockinfile:
+    dest: ./instances_data.sh
+    create: yes
+    block: |
+      {{ instance_name }}_PUBLIC_IP={{ ec2["instances"][0]["public_ip"] }}
+      {{ instance_name }}_PRIVATE_IP={{ ec2["instances"][0]["private_ip"] }}
+      {{ instance_name }}_PUBLIC_HOSTNAME={{ ec2["instances][0]["private_dns_name"] }}
+      {{ instance_name }}_PRIVATE_HOSTNAME={{ ec2["instances][0]["public_dns_name"] }}
+      {{ instance_name }}_ELASTIC_IP=
+      
+
 - name: Wait for SSH to come up
   wait_for: host={{ ec2["instances"][0]["private_ip"] }} port=22 delay=60 timeout=320 state=started
 
