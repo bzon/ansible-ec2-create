@@ -40,7 +40,7 @@
     marker: "# {mark} {{ instance_name }}"
     create: yes
     block: |
-      export {{ instance_name }}_PUBLIC_IP={{ ec2["instances"][0]["public_ip"] }}
+      export {{ instance_name }}_PUBLIC_IP={{ ec2_eip["public_ip"] }}
       export {{ instance_name }}_PRIVATE_IP={{ ec2["instances"][0]["private_ip"] }}
       export {{ instance_name }}_PUBLIC_HOSTNAME={{ ec2["instances"][0]["public_dns_name"] }}
       export {{ instance_name }}_PRIVATE_HOSTNAME={{ ec2["instances"][0]["private_dns_name"] }}
